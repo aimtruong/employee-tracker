@@ -21,13 +21,13 @@ const promptUser = () => {
         switch(response.ChoiceOptions){
             case "View all departments":
                 console.table(deptArray);
-                break;
+                return promptUser(deptArray);
             case "View all roles":
                 console.table(roleArray);
-                break;
+                return promptUser(roleArray);
             case "View all employees":
                 console.table(empArray);
-                break;
+                return promptUser(empArray);
             case "Add a department":
                 return inquirer.prompt([
                     {
@@ -40,6 +40,7 @@ const promptUser = () => {
                     deptArray.push(addDept);
                     console.log(deptArray);
                     console.log(`Added department ${addDept.deptName} to the database`);
+                    return promptUser(deptArray);
                 });
             case "Add a role":
                 return inquirer.prompt([
@@ -63,6 +64,7 @@ const promptUser = () => {
                     roleArray.push(addRole);
                     console.log(roleArray);
                     console.log(`Added role ${addRole.roleName} to the database`);
+                    return promptUser(roleArray);
                 });
             case "Add an employee":
                 return inquirer.prompt([
@@ -91,6 +93,7 @@ const promptUser = () => {
                     empArray.push(addEmp);
                     console.log(empArray);
                     console.log(`Added ${addEmp.empFn} ${addEmp.empLn} to the database`);
+                    return promptUser(empArray);
                 });
             case "Update an Employee Role":
                 return inquirer.prompt([
@@ -109,6 +112,7 @@ const promptUser = () => {
                 .then(updateEmpRole => {
                     console.log(updateEmpRole);
                     console.log(`Updated ${updateEmpRole.empList}'s role to ${updateEmpRole.empNR} to the database`);
+                    return promptUser(updateEmpRole);
                 });
             }
     });
