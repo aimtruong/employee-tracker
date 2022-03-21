@@ -1,16 +1,19 @@
 
+// packages needed
 const inquirer = require("inquirer");
 
-
+// arrays for tables
 let deptArray = [];
 let roleArray = [];
 let empArray = [];
 
 
-const promptUser = () => {
-
+// to export for server.js to use
+module.exports = promptUser = () => {
     return inquirer.prompt([
         {
+            // for user to pick task
+            // will keep repeating
             type: "list",
             name: "ChoiceOptions",
             message: "What would you like to do? ",
@@ -18,6 +21,7 @@ const promptUser = () => {
         }
     ])
     .then(response => {
+        // cases depending on task
         switch(response.ChoiceOptions){
             case "View all departments":
                 console.table(deptArray);
@@ -38,7 +42,6 @@ const promptUser = () => {
                 ])
                 .then(addDept => {
                     deptArray.push(addDept);
-                    console.log(deptArray);
                     console.log(`Added department ${addDept.deptName} to the database`);
                     return promptUser(deptArray);
                 });
@@ -62,7 +65,6 @@ const promptUser = () => {
                 ])
                 .then(addRole => {
                     roleArray.push(addRole);
-                    console.log(roleArray);
                     console.log(`Added role ${addRole.roleName} to the database`);
                     return promptUser(roleArray);
                 });
@@ -91,7 +93,6 @@ const promptUser = () => {
                 ])
                 .then(addEmp => {
                     empArray.push(addEmp);
-                    console.log(empArray);
                     console.log(`Added ${addEmp.empFn} ${addEmp.empLn} to the database`);
                     return promptUser(empArray);
                 });
@@ -101,7 +102,7 @@ const promptUser = () => {
                         type: "list",
                         name: "empList",
                         message: "Which employee would you like to update? ",
-                        choices: [empArray]
+                        choices: empArray
                     },
                     {
                         type: "input",
@@ -117,8 +118,3 @@ const promptUser = () => {
             }
     });
 };
-
-promptUser()
-    .catch(err => {
-        console.log(err);
-    });
