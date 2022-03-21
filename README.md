@@ -26,10 +26,8 @@
 
 ## Preview
 ### First Look
----
-> include screenshots here,
-> create an 'assets/images' folder and drag image in this section
----
+![first-look](https://user-images.githubusercontent.com/95596045/159210562-66747fdb-8dc9-424d-b960-1e70e22e5e6f.JPG)
+
 
 ### Walkthrough Video
 >Video
