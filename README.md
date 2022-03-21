@@ -18,6 +18,7 @@
 
 ## Usage
 - Command-line prompts to easily create tables for departments, roles, and employees
+- Type "npm start" to start
 
 
 ## Contributing
